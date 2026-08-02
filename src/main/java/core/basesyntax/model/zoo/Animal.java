@@ -2,6 +2,7 @@ package core.basesyntax.model.zoo;
 
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.DiscriminatorType;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -9,13 +10,13 @@ import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.Table;
 
+@Entity
 @Table(name = "animals")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "animal", discriminatorType = DiscriminatorType.STRING)
 public class Animal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long animalId;
+    private Long id;
     private int age;
     private String name;
 
@@ -35,11 +36,11 @@ public class Animal {
         this.name = name;
     }
 
-    public Long getAnimalId() {
-        return animalId;
+    public Long getId() {
+        return id;
     }
 
-    public void setAnimalId(Long id) {
-        this.animalId = animalId;
+    public void setId(Long id) {
+        this.id = id;
     }
 }
